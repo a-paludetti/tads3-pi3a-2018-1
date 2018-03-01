@@ -17,14 +17,16 @@ public class Produto {
     private float precoCompra;
     private float precoVenda;
     private int quantidade;
-    private String categoria;
+    private int categoria;
     
-    public Produto(int idProduto, String nome, float precoCompra, float precoVenda){
+    public Produto(int idProduto, String nome, float precoCompra, float precoVenda, int quantidade, int categoria){
         
         this.idProduto = idProduto;
         this.nome = nome;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
+        this.quantidade = quantidade;
+        this.categoria = categoria;
     }
 
     public int getIdProduto() {
@@ -75,11 +77,11 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public String getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
     
