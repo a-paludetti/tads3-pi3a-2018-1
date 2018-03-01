@@ -11,7 +11,7 @@ package com.senac.tads;
  */
 public class Categoria {
 
-    public static int CodigoCategoria(Produto p) {
+   /* public static int CodigoCategoria(Produto p) {
         int abc = 0;
         String categoria = p.getCategoria();
 
@@ -43,5 +43,5 @@ public class Categoria {
         }
 
         return abc;
-    }
+    } */
 }
