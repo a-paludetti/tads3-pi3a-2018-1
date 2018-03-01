@@ -39,6 +39,26 @@ public class ProdutoDAO {
         
     }
 
+    public static void inserirCategoria(com.senac.tads.Categoria produto_categoria) throws SQLException, Exception {
+        cn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        String sql = "INSERT INTO produto_categoria(categoriaId, categoriaNome, produtoId) "
+                + " VALUES(?,?,?)";
+        
+        try {
+            stmt = cn.prepareStatement(sql);
+            stmt.setInt(1, produto_categoria.getCategoriaId());
+            stmt.setString(2, produto_categoria.getCategoriaNome());
+            stmt.setInt(3, produto_categoria.getProdutoId());
+            stmt.execute();
+            
+        } finally {
+            ConnectionFactory.closeConnection(cn, stmt);
+        }
+        
+    }
+    
 //    Validação do produto a ser gravado na base.
     public static void validaProduto(com.senac.tads.Produto produto) throws Exception {
         if (produto.getIdProduto() <= 0) {
