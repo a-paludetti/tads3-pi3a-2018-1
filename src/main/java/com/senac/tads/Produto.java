@@ -10,17 +10,17 @@ package com.senac.tads;
  * @author Marcelo Pereira <marcelo.pereira@rerum.com.br>
  */
 public class Produto {
-    
+
     private int idProduto;
     private String nome;
     private String descricao;
     private float precoCompra;
     private float precoVenda;
     private int quantidade;
-    private int categoria;
-    
-    public Produto(int idProduto, String nome, float precoCompra, float precoVenda, int quantidade, int categoria){
-        
+    private String categoria;
+
+    public Produto(int idProduto, String nome, float precoCompra, float precoVenda, int quantidade, String categoria) {
+
         this.idProduto = idProduto;
         this.nome = nome;
         this.precoCompra = precoCompra;
@@ -77,14 +77,11 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public int getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
-    
-    
 }

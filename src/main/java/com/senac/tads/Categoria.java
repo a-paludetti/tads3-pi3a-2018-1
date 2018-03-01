@@ -11,9 +11,9 @@ package com.senac.tads;
  */
 public class Categoria {
 
-    public static int CodigoFornecedor(Produto p) {
+    public static int Categoria(Produto p) {
         int abc = 0;
-        String cba = p.getFornecedor();
+        String cba = p.getCategoria();
 
         switch (cba.charAt(0)) {
             case 'A':
@@ -102,19 +102,31 @@ public class Categoria {
         return abc;
     }
 
-    public static int CodigoTipo(Produto p) {
+    public static int CodigoCategoria(Produto p) {
         int abc = 0;
-        String tipo = p.getTipo();
+        String categoria = p.getCategoria();
 
-        switch (tipo) {
-            case "Jogos":
+        switch (categoria) {
+            case "Alimento":
                 abc = 1100;
                 break;
-            case "Periféricos":
+            case "Bebida":
                 abc = 1200;
                 break;
-            case "Itens Diversos":
+            case "Limpeza":
                 abc = 1300;
+                break;
+            case "Eletronico":
+                abc = 1400;
+                break;
+            case "Moveis":
+                abc = 1500;
+                break;
+            case "Automotivo":
+                abc = 1600;
+                break;
+            case "Pet":
+                abc = 1700;
                 break;
             default:
                 abc = 1404;
@@ -122,57 +134,5 @@ public class Categoria {
         }
 
         return abc;
-    }
-
-    public static int CodigoPlataforma(Produto p) {
-        int abc = 0;
-
-        String tipo = p.getPlataforma();
-
-        switch (tipo) {
-            case "Nintendo Switch":
-                abc = 01;
-                break;
-            case "PC":
-                abc = 2;
-                break;
-            case "Playstation 3":
-                abc = 3;
-                break;
-            case "Playstation 4":
-                abc = 4;
-                break;
-            case "Xbox 360":
-                abc = 5;
-                break;
-            case "Xbox One":
-                abc = 6;
-                break;
-            case "Wii":
-                abc = 7;
-                break;
-            case "Wii U":
-                abc = 8;
-                break;
-            default:
-                abc = 14;
-                break;
-        }
-        return abc;
-    }
-
-    public static int CodigoProduto(Produto p) {
-        StringBuilder codigo = new StringBuilder();
-        int c = 0;
-
-        codigo.append(p.getDataCadastro());
-        codigo.append(p.getNome().length());
-        codigo.append(CodigoFornecedor(p));
-        codigo.append(CodigoTipo(p));
-        codigo.append(CodigoPlataforma(p));
-
-        c = Integer.parseInt(codigo.toString());
-
-        return c;
     }
 }
