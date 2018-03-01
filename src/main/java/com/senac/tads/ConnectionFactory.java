@@ -16,9 +16,6 @@ public class ConnectionFactory {
     private static final String PASS = "senac";
 //    private static final String USER = "root";
 //    private static final String PASS = "rom08_01";
-    
-//by Andre, é a senha do meu server
-//    private static final String PASS = "admin";
 
     public static Connection getConnection() {
         try {
