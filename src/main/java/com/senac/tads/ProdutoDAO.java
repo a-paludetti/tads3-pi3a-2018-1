@@ -30,7 +30,7 @@ public class ProdutoDAO {
             stmt.setString(3, produto.getDescricao());
             stmt.setFloat(4, produto.getPrecoCompra());
             stmt.setFloat(5, produto.getPrecoVenda());
-            stmt.setString(6, produto.getCategoria());
+//            stmt.setString(6, produto.getCategoria());
             stmt.execute();
             
         } finally {
@@ -65,9 +65,9 @@ public class ProdutoDAO {
             throw new Exception("Quantidade inválida, informe a quantidade em estoque.");
         }
         
-        if (produto.getCategoria().contentEquals("Escolha")) {
-            throw new Exception("Categoria de produto inválida, selecione uma das opções");
-        }
+//        if (produto.getCategoria().contentEquals("Escolha")) {
+//            throw new Exception("Categoria de produto inválida, selecione uma das opções");
+//        }
         
     }
 

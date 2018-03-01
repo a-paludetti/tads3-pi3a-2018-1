@@ -5,6 +5,9 @@
  */
 package com.senac.tads;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Marcelo Pereira <marcelo.pereira@rerum.com.br>
@@ -17,16 +20,19 @@ public class Produto {
     private float precoCompra;
     private float precoVenda;
     private int quantidade;
-    private String categoria;
+    private final Date data = new Date(System.currentTimeMillis());
+    private final SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-dd");
+//    private String categoria;
 
-    public Produto(int idProduto, String nome, float precoCompra, float precoVenda, int quantidade, String categoria) {
+    public Produto(int idProduto, String nome, float precoCompra, float precoVenda, int quantidade) {
 
         this.idProduto = idProduto;
         this.nome = nome;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
         this.quantidade = quantidade;
-        this.categoria = categoria;
+//        this.df.format(data);
+//        this.categoria = categoria;
     }
 
     public int getIdProduto() {
@@ -76,12 +82,15 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-
-    public String getCategoria() {
-        return categoria;
+    public String getDataAtual(){
+        return df.format(data);
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+//    public String getCategoria() {
+//        return categoria;
+//    }
+//
+//    public void setCategoria(String categoria) {
+//        this.categoria = categoria;
+//    }
 }
