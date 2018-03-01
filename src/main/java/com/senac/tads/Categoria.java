@@ -11,37 +11,35 @@ package com.senac.tads;
  */
 public class Categoria {
 
-   /* public static int CodigoCategoria(Produto p) {
-        int abc = 0;
-        String categoria = p.getCategoria();
+    private int categoriaId;
+    
+    private String categoriaNome;
+    
+    private int produtoId;
 
-        switch (categoria) {
-            case "Alimento":
-                abc = 1100;
-                break;
-            case "Bebida":
-                abc = 1200;
-                break;
-            case "Limpeza":
-                abc = 1300;
-                break;
-            case "Eletronico":
-                abc = 1400;
-                break;
-            case "Moveis":
-                abc = 1500;
-                break;
-            case "Automotivo":
-                abc = 1600;
-                break;
-            case "Pet":
-                abc = 1700;
-                break;
-            default:
-                abc = 1404;
-                break;
-        }
+    public int getCategoriaId() {
+        return categoriaId;
+    }
 
-        return abc;
-    } */
+    public void setCategoriaId(int categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+
+    public String getCategoriaNome() {
+        return categoriaNome;
+    }
+
+    public void setCategoriaNome(String categoriaNome) {
+        this.categoriaNome = categoriaNome;
+    }
+
+    public int getProdutoId() {
+        return produtoId;
+    }
+
+    public void setProdutoId(int produtoId) {
+        this.produtoId = produtoId;
+    }
+    
 }
+    
