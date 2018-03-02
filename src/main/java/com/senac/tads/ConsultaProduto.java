@@ -14,26 +14,28 @@ import java.util.Scanner;
 
 public class ConsultaProduto {
 
-    String nomeProduto; //variável global para consulta
+    Produto p;
 
-    public String leitor() {
+    public static String leitor() {
         Scanner reader = new Scanner(System.in);
         System.out.print("Nome do produto: ");
         String input = reader.nextLine();
         return input;
     }
 
-    public void Consultar() throws SQLException, Exception {
-        nomeProduto = leitor();
+    public static String Procurar() throws SQLException, Exception {
+        String nomeProduto = leitor();
 
-        // ArrayList lista = produtoDAO.lista(); (método faltando)
-        // for(ConsultaProduto leitor:lista(produto.nome())){
-        // if (nomeProduto==produto.nome()){
-        //    lista.add();}
+        ArrayList<ConsultaProduto> lista = new ArrayList();
+
+        //for (ConsultaProduto leitor : lista(produto.nome())) {
+        //  if (nomeProduto.equalsIgnoreCase(this.toString())) {
+        //    lista.add(this);
+        //    }
         //}
-        // for(int i:lista){
-        //   System.out.print(i + " - " produto.nome);
-        //}
+        for (int i = 0; i < lista.size(); i++) {
+            return ((i + lista.get(i).toString()));
+        }
     }
 
 }
