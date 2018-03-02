@@ -16,12 +16,7 @@ import java.util.Scanner;
  */
 public class AlterarProduto {
 
-    public String procurarProduto() throws Exception {
-        String p;
-        return p = com.senac.tads.ConsultaProduto.Procurar();
-    }
-
-    public void menu() {
+     public void menu() {
         Scanner leitor = new Scanner(System.in);
 
         String escolha;
@@ -46,3 +41,4 @@ public class AlterarProduto {
     }
 
 }
+
