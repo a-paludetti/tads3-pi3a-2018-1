@@ -5,6 +5,9 @@
  */
 package com.senac.tads;
 
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Vinicius Presoto
@@ -48,5 +51,12 @@ public class Categoria {
         this.produtoId = produtoId;
     }
     
+    public List<Categoria> getCategorias() throws SQLException{
+        return ProdutoDAO.listarCategoria();
+    }
+    
+    public void setProdutoCategoria(int produtoID, int CategoriaID) throws SQLException{
+        
+    }
 }
     

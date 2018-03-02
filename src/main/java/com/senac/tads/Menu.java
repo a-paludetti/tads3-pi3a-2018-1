@@ -5,6 +5,7 @@
  */
 package com.senac.tads;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -16,11 +17,11 @@ public class Menu {
     /*Criar um menu com as funcionalidades de inserir, editar/autalizar, 
     excluir e consultar.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException{
         Principal();
     }
 
-    static void Principal() {
+    static void Principal() throws Exception {
 
         Scanner ler = new Scanner(System.in);
 
@@ -57,8 +58,23 @@ public class Menu {
 
         } while (sair == false);
     }
+    
+    public int[] produtoCategoria(int produtoID, int categoriaID) throws SQLException{
+        int[] pc = new int[2];
+        for(int i = 0; i < pc.length; i++){
+            if(i==0){
+                pc[i] = produtoID;
+            }else{
+                pc[i] = categoriaID;
+            }
+        }
+            
+        return pc;
+    }
+    
+    public int produtoID(List<Produto> produtos)
 
-    static int Opcoes(int escolhaNum) {
+    static int Opcoes(int escolhaNum) throws SQLException, Exception{
 
         switch (escolhaNum) {
             case 1:
@@ -78,14 +94,24 @@ public class Menu {
                 //System.out.println("Excluir");
                 ExcluirProduto.Exclusao();
                 break;
-            case 5:
+                case 5:
+                // Listar as Categorias cadastradas
+                    Categoria cat = new Categoria();
+                    cat.getCategorias();
+                break;
+                case 6:
+                // Listar as Categorias cadastradas
+                    Categoria cat2 = new Categoria();
+                    cat.getCategorias();
+                break;
+            case 0:
                 //Sair
                 System.out.println("Programa finalizado.");
                 break;
             default:
                 //Entrada invalida
                 System.err.println("Erro\nEscolha uma das opções acima.");
-                escolhaNum = 0;
+                escolhaNum = 99;
                 break;
         }
 
