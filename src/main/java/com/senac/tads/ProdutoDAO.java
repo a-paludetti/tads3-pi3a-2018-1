@@ -90,6 +90,40 @@ public class ProdutoDAO {
 //        }
     }
 
+     public List<Produto> consultarProduto() throws SQLException {
+        cn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        List<Produto> listaProdutos = new ArrayList<Produto>();
+        Produto p;
+        
+        String sql = "SELECT * FROM produto";
+        
+         ResultSet rs = null;
+        PreparedStatement stm = null;
+        
+         try {
+            stm = cn.prepareStatement(sql);
+            stm.setBoolean(1, false);
+            rs = stm.executeQuery();
+            
+            while(rs.next()){
+                p = new Produto();
+                p.setIdProduto(rs.getInt("ID"));
+                p.setNome(rs.getString("NOME"));
+                p.setDescricao(rs.getString("DESCRICAO"));
+                p.setPrecoCompra(rs.getFloat("PRECO_COMPRA"));
+                p.setPrecoVenda(rs.getFloat("PRECO_VENDA"));
+                p.setQuantidade(rs.getInt("QUANTIDADE"));
+                p.setDataAtual(rs.getDate("D_CADASTRO"));
+                listaProdutos.add(p);
+            }
+            
+         }finally {
+        }
+        
+        return listaProdutos;
+    }
+    
     //Excluir produto de forma lógica
     public static void excluirProduto(String nomeProduto)
             throws SQLException, Exception {
