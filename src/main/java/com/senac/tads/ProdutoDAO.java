@@ -16,6 +16,9 @@ public class ProdutoDAO {
     private static Connection cn = null;
 
     private static List<ProdutoDAO> listaProduto = new ArrayList<ProdutoDAO>();
+    
+   private static List<Produto> listaProdutos = new ArrayList<Produto>();
+   private static List<Categoria> listaCategorias = new ArrayList<Categoria>();
 
     public static void inserir(com.senac.tads.Produto produto) throws SQLException, Exception {
         cn = ConnectionFactory.getConnection();
@@ -45,12 +48,13 @@ public class ProdutoDAO {
         cn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
-        String sql = "INSERT INTO produto_categoria(categoriaNome) "
-                + " VALUES(?)";
+        String sql = "INSERT INTO produto_categoria(ID_PRODUTO, ID_CATEGORIA) "
+                + " VALUES(?,?)";
         
         try {
             stmt = cn.prepareStatement(sql);
-            stmt.setString(1, produto_categoria.getCategoriaNome());
+            stmt.setInt(1, produto_categoria.getProdutoId());
+            stmt.setInt(2, produto_categoria.getCategoriaId());
             stmt.execute();
 
         } finally {
@@ -93,7 +97,7 @@ public class ProdutoDAO {
      public List<Produto> consultarProduto() throws SQLException {
         cn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        List<Produto> listaProdutos = new ArrayList<Produto>();
+        
         Produto p;
         
         String sql = "SELECT * FROM produto";
@@ -119,14 +123,15 @@ public class ProdutoDAO {
             }
             
          }finally {
+             ConnectionFactory.closeConnection(cn, stmt, rs);
         }
         
         return listaProdutos;
     }
 	
-	public static Produto selecionaProduto(Integer codigo) {
+public  Produto selecionaProduto(Integer codigo) {
         for (Produto p : listaProdutos) {
-            if (p.getCodProduto() == codigo) {
+            if (p.getIdProduto()== codigo) {
                 return p;
             }
         }
@@ -153,4 +158,35 @@ public class ProdutoDAO {
         }
 
     }
+    
+    public static List<Categoria> listarCategoria() throws SQLException{
+        cn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        Categoria c;
+        
+        String sql = "SELECT * FROM categoria";
+        
+         ResultSet rs = null;
+        PreparedStatement stm = null;
+        
+         try {
+            stm = cn.prepareStatement(sql);
+            stm.setBoolean(1, false);
+            rs = stm.executeQuery();
+            
+            while(rs.next()){
+                c = new Categoria();
+                c.setCategoriaId(rs.getInt("ID"));
+                c.setCategoriaNome(rs.getString("NOME"));
+                listaCategorias.add(c);
+            }
+            
+         }finally {
+             ConnectionFactory.closeConnection(cn, stmt, rs);
+        }
+        
+        return listaCategorias;
+        
+    }
+    
 }

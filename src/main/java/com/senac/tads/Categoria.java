@@ -17,6 +17,9 @@ public class Categoria {
     
     private int produtoId;
     
+    public Categoria(){
+        
+    }
     public Categoria(String nome){
         this.categoriaNome = nome;
     }
