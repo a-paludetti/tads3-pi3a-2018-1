@@ -36,6 +36,7 @@ public class ConsultaProduto {
         for (int i = 0; i < lista.size(); i++) {
             return ((i + lista.get(i).toString()));
         }
+        return nomeProduto;
     }
 
 }
