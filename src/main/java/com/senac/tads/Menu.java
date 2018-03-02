@@ -75,7 +75,8 @@ public class Menu {
                 break;
             case 4:
                 //Metodo de Exclusao
-                System.out.println("Excluir");
+                //System.out.println("Excluir");
+                ExcluirProduto.Exclusao();
                 break;
             case 5:
                 //Sair
