@@ -24,4 +24,55 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+	<developers>
+		<developer>
+		<id>vinipresoto</id>
+		<name>Vinicius Presoto</name>
+		<email>vini_presoto@hotmail.com</email>
+		<roles>
+		<role>Developer</role>
+		</roles>
+		<timezone>-3</timezone>
+	</developer>
+
+	<developer>
+		<id>aayandre</id>
+		<name>Andre de Amorim Yamamoto</name>
+		<email>aayandre94@gmail.com</email>
+		<roles>
+		<role>Developer</role>
+		</roles>
+		<timezone>-3</timezone>
+	</developer>
+
+	<developer>
+		<id>mcpereira7</id>
+		<name>Marcelo da Costa Pereira</name>
+		<email>macope727@gmail.com</email>
+		<roles>
+		<role>Developer</role>
+		</roles>
+		<timezone>-3</timezone>
+	</developer>
+
+	<developer>
+		<id>a-paludetti</id>
+		<name>Aline Paludetti de Oliveira</name>
+		<email>a.paludetti@gmail.com</email>
+		<roles>
+		<role>Developer</role>
+		</roles>
+		<timezone>-3</timezone>
+	</developer>
+
+	<developer>
+		<id>LeandrOrgm</id>
+		<name>Leandro Alves de Oliveira</name>
+		<email>leandro10le@hotmail.com</email>
+		<roles>
+		<role>Developer</role>
+		</roles>
+		<timezone>-3</timezone>
+	</developer>
+</developers>
 </project>

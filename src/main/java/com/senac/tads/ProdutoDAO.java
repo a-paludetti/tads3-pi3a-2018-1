@@ -123,6 +123,15 @@ public class ProdutoDAO {
         
         return listaProdutos;
     }
+	
+	public static Produto selecionaProduto(Integer codigo) {
+        for (Produto p : listaProdutos) {
+            if (p.getCodProduto() == codigo) {
+                return p;
+            }
+        }
+        return null;
+    }
     
     //Excluir produto de forma lógica
     public static void excluirProduto(String nomeProduto)
