@@ -10,12 +10,23 @@ package com.senac.tads;
  * @author Marcelo Pereira <marcelo.pereira@rerum.com.br>
  */
 public class teste {
-    public static void main(String[] args) {
-        Produto p = new Produto(1, "teste", 10, 20, 10);
+    
+    public int menu(int opcao){
+        while(opcao != 0){
+            
+        }
+        return opcao;
+    }
+    
+    
+    public static void main(String[] args) throws Exception {
+        Produto p = new Produto( "teste", 10, 20, 10);
         System.out.println(p.getNome());
         System.out.println(p.getPrecoCompra());
         System.out.println(p.getQuantidade());
         System.out.println(p.getDataAtual());
+        
+        ProdutoDAO.inserir(p);
     }
     
 }

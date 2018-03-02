@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -20,17 +21,18 @@ public class ProdutoDAO {
         cn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
-        String sql = "INSERT INTO produto(idProduto, nome, descricao, precoCompra, precoVenda, quantidade, categoria) "
-                + " VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO produto( NOME, DESCRICAO, PRECO_COMPRA, PRECO_VENDA, QUANTIDADE, DT_CADASTRO) "
+                + " VALUES(?,?,?,?,?,?)";
         
         try {
             stmt = cn.prepareStatement(sql);
-            stmt.setInt(1, produto.getIdProduto());
-            stmt.setString(2, produto.getNome());
-            stmt.setString(3, produto.getDescricao());
-            stmt.setFloat(4, produto.getPrecoCompra());
-            stmt.setFloat(5, produto.getPrecoVenda());
-//            stmt.setString(6, produto.getCategoria());
+//            stmt.setInt(1, produto.getIdProduto());
+            stmt.setString(1, produto.getNome());
+            stmt.setString(2, produto.getDescricao());
+            stmt.setFloat(3, produto.getPrecoCompra());
+            stmt.setFloat(4, produto.getPrecoVenda());
+            stmt.setInt(5, produto.getQuantidade());
+            stmt.setString(6, produto.getDataAtual());
             stmt.execute();
             
         } finally {
@@ -43,14 +45,12 @@ public class ProdutoDAO {
         cn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
-        String sql = "INSERT INTO produto_categoria(categoriaId, categoriaNome, produtoId) "
-                + " VALUES(?,?,?)";
+        String sql = "INSERT INTO produto_categoria(categoriaNome) "
+                + " VALUES(?)";
         
         try {
             stmt = cn.prepareStatement(sql);
-            stmt.setInt(1, produto_categoria.getCategoriaId());
-            stmt.setString(2, produto_categoria.getCategoriaNome());
-            stmt.setInt(3, produto_categoria.getProdutoId());
+            stmt.setString(1, produto_categoria.getCategoriaNome());
             stmt.execute();
             
         } finally {
@@ -110,6 +110,40 @@ public class ProdutoDAO {
             ConnectionFactory.closeConnection(cn, stmt);
         }
         
+    }
+    
+    public List<Produto> consultarProduto() throws SQLException {
+        cn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        List<Produto> listaProdutos = new ArrayList<Produto>();
+        Produto p;
+        
+        String sql = "SELECT * FROM produto";
+        
+         ResultSet rs = null;
+        PreparedStatement stm = null;
+        
+         try {
+            stm = cn.prepareStatement(sql);
+            stm.setBoolean(1, false);
+            rs = stm.executeQuery();
+            
+            while(rs.next()){
+                p = new Produto();
+                p.setIdProduto(rs.getInt("ID"));
+                p.setNome(rs.getString("NOME"));
+                p.setDescricao(rs.getString("DESCRICAO"));
+                p.setPrecoCompra(rs.getFloat("PRECO_COMPRA"));
+                p.setPrecoVenda(rs.getFloat("PRECO_VENDA"));
+                p.setQuantidade(rs.getInt("QUANTIDADE"));
+                p.setDataAtual(rs.getDate("D_CADASTRO"));
+                listaProdutos.add(p);
+            }
+            
+         }finally {
+        }
+        
+        return listaProdutos;
     }
     
 }

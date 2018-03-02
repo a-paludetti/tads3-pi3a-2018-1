@@ -24,9 +24,13 @@ public class Produto {
     private final SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-dd");
 //    private String categoria;
 
-    public Produto(int idProduto, String nome, float precoCompra, float precoVenda, int quantidade) {
+    public Produto() {
+    }
 
-        this.idProduto = idProduto;
+    
+    public Produto(String nome, float precoCompra, float precoVenda, int quantidade) {
+
+//        this.idProduto = idProduto;
         this.nome = nome;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
@@ -84,6 +88,9 @@ public class Produto {
     }
     public String getDataAtual(){
         return df.format(data);
+    }
+    public void setDataAtual(Date data){
+        SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-dd");
     }
 
 //    public String getCategoria() {
