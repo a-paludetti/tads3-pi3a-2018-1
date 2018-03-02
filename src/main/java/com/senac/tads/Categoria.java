@@ -16,6 +16,10 @@ public class Categoria {
     private String categoriaNome;
     
     private int produtoId;
+    
+    public Categoria(String nome){
+        this.categoriaNome = nome;
+    }
 
     public int getCategoriaId() {
         return categoriaId;
