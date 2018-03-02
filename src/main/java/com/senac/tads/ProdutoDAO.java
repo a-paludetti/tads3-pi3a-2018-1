@@ -94,7 +94,7 @@ public class ProdutoDAO {
 //        }
     }
 
-     public List<Produto> consultarProduto() throws SQLException {
+     public static List<Produto> consultarProduto() throws SQLException {
         cn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -171,7 +171,7 @@ public  Produto selecionaProduto(Integer codigo) {
         
          try {
             stm = cn.prepareStatement(sql);
-            stm.setBoolean(1, false);
+//            stm.setBoolean(1, false);
             rs = stm.executeQuery();
             
             while(rs.next()){

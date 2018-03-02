@@ -38,5 +38,16 @@ public class ConsultaProduto {
         }
         return nomeProduto;
     }
+    
+    public static Produto prourarProduto(List<Produto> listaProdutos, String nome){
+        Produto p = new Produto();
+        for(int i = 0; i < listaProdutos.size(); i++){
+            if(listaProdutos.get(i).getNome().equals(nome)){
+                p=listaProdutos.get(i);
+            }
+        }
+        
+        return p;
+    }
 
 }

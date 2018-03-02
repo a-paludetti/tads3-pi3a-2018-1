@@ -92,6 +92,7 @@ public class Produto {
     public void setDataAtual(Date data){
         SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-dd");
     }
+    
 
 //    public String getCategoria() {
 //        return categoria;

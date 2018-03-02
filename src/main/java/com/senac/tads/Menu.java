@@ -6,6 +6,7 @@
 package com.senac.tads;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,7 +18,7 @@ public class Menu {
     /*Criar um menu com as funcionalidades de inserir, editar/autalizar, 
     excluir e consultar.
      */
-    public static void main(String[] args) throws SQLException{
+    public static void main(String[] args) throws SQLException, Exception{
         Principal();
     }
 
@@ -36,7 +37,7 @@ public class Menu {
             System.out.println("===  Menu  ===\n");
 
             System.out.printf("1 - Consultar\n2 - Inserir\n3 - Alterar"
-                    + "\n4 - Excluir\n5 - Sair\n\nEscolha um número: ");
+                    + "\n4 - Excluir\n5 - Listar Categorias\n6 - Associar Categoria \n0 - Sair \n\nEscolha um número: ");
 
             //Entrada do cliente
             escolha = ler.nextLine();
@@ -47,12 +48,12 @@ public class Menu {
             if (isNumber) {
                 escolhaNum = Integer.parseInt(escolha);
                 escolhaNum = Opcoes(escolhaNum);
-                if (escolhaNum == 5) {
+                if (escolhaNum == 0) {
                     sair = true;
                 }
             } else {
                 System.err.println("Escolha um dos números acima.");
-                escolhaNum = 0;
+                escolhaNum = 99;
                 sair = false;
             }
 
@@ -72,13 +73,30 @@ public class Menu {
         return pc;
     }
     
-    public int produtoID(List<Produto> produtos)
+    public int produtoID(Produto p) throws SQLException{
+         
+         Scanner sc = new Scanner(System.in);
+                    System.out.println("Digite o Nome do Produto");
+                    String nome = sc.nextLine();
+                     p = ConsultaProduto.prourarProduto(ProdutoDAO.consultarProduto(), nome);
+                     
+         return p.getIdProduto();
+    }
+    
+    public int categoriaID(int c){
+       
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Digite o ID da Categoria Desejada"); 
+       c = sc.nextInt();
+        
+        return c;
+    }
 
     static int Opcoes(int escolhaNum) throws SQLException, Exception{
-
+        Categoria cat2;
         switch (escolhaNum) {
             case 1:
-                //Metodo de Consulta
+                //Metodo de Consulta Produto
                 System.out.println("Consulta");
                 break;
             case 2:
@@ -96,14 +114,19 @@ public class Menu {
                 break;
                 case 5:
                 // Listar as Categorias cadastradas
-                    Categoria cat = new Categoria();
-                    cat.getCategorias();
+                   cat2 = new Categoria();
+                    List<Categoria> lcat = cat2.getCategorias();
+                     System.out.println("ID   |   Nome");
+                    for(int i = 0; i < lcat.size(); i++){
+                        System.out.println(lcat.get(i).getCategoriaId() + "    |   " + lcat.get(i).getCategoriaNome()); 
+                    }
                 break;
                 case 6:
-                // Listar as Categorias cadastradas
-                    Categoria cat2 = new Categoria();
-                    cat.getCategorias();
+                // Associar Categoria Produto
+                    
+                    
                 break;
+                
             case 0:
                 //Sair
                 System.out.println("Programa finalizado.");
